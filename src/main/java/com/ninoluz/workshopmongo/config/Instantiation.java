@@ -1,6 +1,7 @@
 package com.ninoluz.workshopmongo.config;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.TimeZone;
 
@@ -42,6 +43,9 @@ public class Instantiation implements CommandLineRunner{
 		Post post2 = new Post(null, sdf.parse("15/11/2022"),"Bom dia", "Acordei feliz hoje!", new AuthorDTO(maria));
 				
 		postrepository.saveAll(Arrays.asList(post1, post2));
+		
+		maria.getPosts().addAll(Arrays.asList(post1, post2));		
+		userrepository.save(maria);
 		
 	}
 	
