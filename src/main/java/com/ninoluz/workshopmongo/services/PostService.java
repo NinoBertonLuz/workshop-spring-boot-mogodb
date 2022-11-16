@@ -1,10 +1,11 @@
 package com.ninoluz.workshopmongo.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ninoluz.workshopmongo.domain.Post;
-import com.ninoluz.workshopmongo.domain.User;
 import com.ninoluz.workshopmongo.repository.PostRepository;
 import com.ninoluz.workshopmongo.services.exception.ObjectNotFoundException;
 
@@ -22,4 +23,8 @@ public class PostService {
 		
 		return user;
 	}	
+	
+	public List<Post> findByTitle(String text){
+		return repo.findByTitleContainingIgnoreCase(text);
+	}
 }
